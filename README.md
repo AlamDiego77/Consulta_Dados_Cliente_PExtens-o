@@ -1,4 +1,4 @@
-# Consulta_Dados_Cliente_PExtencao
+# Consulta_Dados_Cliente_PExtensao
 
 ## 🚀 Projeto de extensão
 
