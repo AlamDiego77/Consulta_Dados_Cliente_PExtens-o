@@ -27,7 +27,7 @@ class PRTGAPI:
 
     def get_device_by_name(self, device_name):
         try:
-            url = self.build_url("/api/table.json?content=devices&output=json&columns=objid,device,host,group,status")
+            url = self.build_url("/api/table.json?content=devices&output=json&columns=objid,device,group,status")
             response = self.session.get(url, verify=self.verify_ssl)
             response.raise_for_status()
             data = response.json()
@@ -54,7 +54,7 @@ class PRTGAPI:
                 return None
 
             grupo_loja_id = grupo_loja['objid']
-            url_devices = self.build_url(f"/api/table.json?content=devices&output=json&columns=objid,device,host,group,status,group_raw&filter_parentid={grupo_loja_id}")
+            url_devices = self.build_url(f"/api/table.json?content=devices&output=json&columns=objid,device,group,status,group_raw&filter_parentid={grupo_loja_id}")
             response_devices = self.session.get(url_devices, verify=self.verify_ssl)
             response_devices.raise_for_status()
             dispositivos_data = response_devices.json()
@@ -72,7 +72,7 @@ class PRTGAPI:
 
     def get_sensors_by_device_id(self, device_id):
         try:
-            url = self.build_url(f"/api/table.json?content=sensors&output=json&columns=objid,sensor,status,message_raw,message,lastvalue&id={device_id}")
+            url = self.build_url(f"/api/table.json?content=sensors&output=json&columns=objid,sensor,message_raw,message,lastvalue&id={device_id}")
             response = self.session.get(url, verify=self.verify_ssl)
             response.raise_for_status()
             data = response.json()
